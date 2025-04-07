@@ -1,0 +1,28 @@
+---
+import type { GetStaticPaths } from "astro";
+import estudisData from '../../data/cv.json';
+import Layout from '../../layouts/Layout.astro';
+//funció que retorna totes les rutes dinàmiques per generar la compilació
+export async function getStaticPaths(){
+    //mapejar els estudis per generar els parametres id per cada ruta dinàmica
+    const paths = estudisData.education.map(estudi => ({
+        params:{id: estudi.id} //El id de cada estudi serà posat per la ruta dinàmica
+    }));
+    return paths;
+}
+
+//obtenir id de la ruta dinàmica
+const {id} = Astro.params
+//buscar l'estudi per id
+const estudi = estudisData.education.find(estudi => estudi.id === id);
+
+//si no trobes l'estudi, llança error
+if (!estudi){
+    throw new Error("Estudi no trobat")
+}
+---
+<Layout>
+   <h1>{estudi.degree}</h1>
+   <h2>{estudi.institution}</h2>
+   <h3>{estudi.year}</h3>
+</Layout>

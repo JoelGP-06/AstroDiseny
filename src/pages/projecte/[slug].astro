@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths } from "astro";
+import projectsData from '../../data/cv.json';
+import Layout from '../../layouts/Layout.astro';
+import PersonalProjects from "../../components/PersonalProjects.astro";
+//funció que retorna totes les rutes dinàmiques per generar la compilació
+export async function getStaticPaths(){
+    //mapejar els estudis per generar els parametres id per cada ruta dinàmica
+    const paths = projectsData.projects.map(project => ({
+        params:{slug: project.slug} //El id de cada estudi serà posat per la ruta dinàmica
+    }));
+    return paths;
+}
+
+//obtenir id de la ruta dinàmica
+const {slug} = Astro.params
+//buscar l'estudi per id
+const project = projectsData.projects.find(project => project.slug === slug);
+
+//si no trobes l'estudi, llança error
+if (!project){
+    throw new Error("projecte no trobat")
+}
+---
+<Layout>
+   <PersonalProjects />
+    <a href={project.url} style="border: solid 1px black">
+        <div class="container">
+            <img src={project.image} alt="">
+            <h4>{project.name}</h4>
+            <h5>{project.description}</h5>
+        </div>
+    </a>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+        .container {
+          display: flex;
+          flex-direction: column;
+          font-family: "Onest", sans-serif;
+          width: 450px;
+          color: #000;
+          margin-top: 50px;
+          display: flex;
+          margin-left: 100px;
+          border: 1px solid #000;
+          align-items: center;
+          background-color: rgb(249, 248, 248);
+        }
+        img{
+            margin-top: 50px;
+            border-radius: 10px;
+            width: 300px;
+        }
+        h4 {
+          text-decoration: none;
+          font-weight: 700;
+        }
+      </style>
+      
+</Layout>

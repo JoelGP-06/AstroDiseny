@@ -1,0 +1,84 @@
+---
+import Nav from "../components/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+import Infobasica from "../components/Infobasica.astro";
+import Infobtn from "../components/Infobtn.astro";
+import Footer from "../components/Footer.astro";
+import Hr from "../components/Hr.astro";
+import PersonalProjects from "../components/PersonalProjects.astro";
+import Titulo from "../components/Titulo.astro";
+import Posts from "../components/Posts.astro";
+import cvData from "../data/cv.json";
+
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<Layout>
+  <Nav />
+  <Infobasica />
+  <Infobtn title="More Information" />
+  <Hr />
+  <!--<h2>educació</h2>
+	<ul>
+		{cv.education.map((edu => (
+		<li>{edu.degree}</li>)))}
+	</ul>-->
+  <div class="container">
+    <h2>Personal Projects</h2>
+    <h3>Below is a selection of recent projects that I've worked on.</h3>
+  </div>
+  <div class="proyectos">
+    <PersonalProjects 
+    title ={`${cvData.projects[0].name}`}
+    subtitle = {`${cvData.projects[0].subtitle}`}
+    image = {`${cvData.projects[0].image}`}//>
+    
+    <PersonalProjects 
+    title ={`${cvData.projects[1].name}`}
+    subtitle = {`${cvData.projects[1].subtitle}`}
+    image = {`${cvData.projects[1].image}`}//>
+    
+    <PersonalProjects 
+    title ={`${cvData.projects[2].name}`}
+    subtitle = {`${cvData.projects[2].subtitle}`}
+    image = {`${cvData.projects[2].image}`}//>
+    
+    <PersonalProjects 
+    title ={`${cvData.projects[3].name}`}
+    subtitle = {`${cvData.projects[3].subtitle}`}
+    image = {`${cvData.projects[3].image}`}//>
+  </div>
+  <Infobtn title="View older projects" />
+
+  <Hr />
+  <Footer />
+</Layout>
+<style>
+
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  .container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Onest", sans-serif;
+    color: #000;
+    margin-top: 50px;
+    margin-left: 375px;
+    font-weight: 400;
+    display: flex;
+  }
+  .container h3 {
+    margin-top: 10px;
+    font-weight: 400;
+    color: gray;
+  }
+  .proyectos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Optional: Adjust the gap between grid items */
+    margin-bottom: 100px;
+  }
+
+
+</style>

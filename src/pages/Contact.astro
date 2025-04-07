@@ -1,0 +1,30 @@
+---
+import type { GetStaticPaths } from "astro";
+import Nav from '../components/Nav.astro';
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import Titulo from '../components/Titulo.astro';
+import cvData from '../data/cv.json';
+
+
+---
+
+<Layout>
+	<Nav />
+	<Titulo title = "Contact"/>
+	<p>Hola soc en <span>{cvData.name}</span></p>
+	<p>El meu telefon es <span>{cvData.contact.phone}</span></p>
+	<p>Visc a <span>{cvData.contact.location}</span></p>
+	<p>La me va web <span>{cvData.contact.website}</span></p>
+	<p>El meu linkedin <span>{cvData.contact.linkedin}</span></p>
+	<p>El meu github <span>{cvData.contact.github}</span></p>
+	
+	<Footer />
+</Layout>
+<style>
+	p {
+        font-family: 'Onest', sans-serif;
+        color: #000;
+        margin-left: 375px;
+    }
+</style>

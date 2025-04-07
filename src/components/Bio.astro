@@ -1,0 +1,36 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+import cv from '../data/cv.json';
+---
+<div class="container">
+    <div class="trabajo">
+        {cv.information}
+    </div>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    .container {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Onest', sans-serif;
+        font-weight: 600;
+        color: #000;
+        margin-top: 50px;
+        margin-left: 375px;
+        width: 530px;
+    }
+    .container h2{
+        font-weight: 400;
+        color: gray;
+        margin-top: -20px;
+    }
+    .trabajo {
+        color: rgb(59, 59, 59);
+        font-size: larger;
+        font-weight: 400;
+        margin-top: -20px;
+        width: 600px;
+    }
+</style>

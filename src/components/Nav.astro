@@ -1,0 +1,41 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+---
+
+<nav>
+  <div class="principal">
+    <a href="/">jg</a>
+    <div class="links">
+      <a href="Information">Information</a>
+      <a href="Skills">Skills</a>
+      <a href="Contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  nav{
+    margin-top: 80px;
+  }
+  .principal {
+    margin-left: 360px;
+    font-family: "Space Mono", serif;
+    font-weight: 600;
+    font-style: normal;
+    width: 650px;
+    display: flex;
+  }
+
+  .principal a{
+    color: black;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+  .links{
+    margin-left: 300px;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>

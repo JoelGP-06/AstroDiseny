@@ -1,0 +1,70 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+import cvData from "../data/cv.json";
+interface props {
+  title: string;
+  subtitle: string;
+  image: string;
+}
+const {
+  title = "sin title",
+  subtitle = "sin subtitle",
+  image = "https://cdn.pixabay.com/photo/2022/11/02/05/53/cycling-7564103_960_720.jpg",
+} = Astro.props;
+---
+
+<div>
+  <div class="container">
+      <div class="container2">
+        <img src={image} alt="" />
+        <p class="title">{title}</h4>
+        <p class="subtitle">{subtitle}</h5>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  .container {
+    border-radius: 10px; 
+    display: flex;
+    flex-direction: column;
+    font-family: "Onest", sans-serif;
+    color: #000;
+    margin-top: 50px;
+    font-weight: 400;
+    margin-left: 100px;
+    display: flex;
+    width: 500px;
+    background-color: #9e9b9b1f;
+  }
+  .container2 {
+    display: flex;
+    flex-direction: column;
+    font-family: "Onest", sans-serif;
+    width: 450px;
+    color: #000;
+    margin-top: 50px;
+    display: flex;
+    margin-left: 25px;
+  }
+  .title{
+    position: relative;
+    font-weight: 900;
+    color: rgb(43, 43, 43);
+  }
+  .subtitle{
+    margin-top: -10px;
+    font-weight: 400;
+    color: rgb(43, 43, 43);
+  }
+  img {
+    border-radius: 10px;
+  }
+  .container:hover{
+    transition: ease-in-out 3s linear;
+    background-color: rgba(201, 201, 201, 0.377);
+  }
+</style>

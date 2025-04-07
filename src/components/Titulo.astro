@@ -1,0 +1,19 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+interface title{
+  title: string;
+}
+const {title = "text x defecte"} = Astro.props; 
+---
+
+<h2>{title}</h2>
+<style>
+    h2 {
+        font-family: 'Onest', sans-serif;
+        color: #000;
+        margin-left: 375px;
+        font-weight: 600;
+    }
+    
+</style>

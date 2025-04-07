@@ -1,0 +1,41 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+interface writeProps {
+  text: string;
+  text2: string;
+  time: string;
+  text3: string;
+}
+const {text = "text x defecte", text2 = "text2 x defecte",time = "text time per defecte", text3 = "text3 x defecte"} = Astro.props;
+---
+
+<div>
+  <h2>{text}</h2>
+  <span>{text2} <time datetime="2024-09-23">{time}</time></span>
+  <p> {text3}</p>
+</div>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  div {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Onest', sans-serif;
+        color: #000;
+        margin-left: 375px;
+    }
+    div h2 {
+        font-weight: 600;
+    }
+    div p{
+        font-weight: 400;
+        color: rgb(59, 59, 59);
+        width: 600px;
+    }
+    div span {
+        font-family: "Space Mono", serif;
+        margin-top: -11px;
+        color: gray;
+    }
+</style>

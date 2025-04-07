@@ -1,0 +1,36 @@
+---
+import Nav from "../components/Nav.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Titulo from "../components/Titulo.astro";
+import cvData from "../data/cv.json";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<Layout>
+  <Nav /><br>
+  <Titulo title = "Skills"/>
+  <div class="grid grid-cols-3 mt-5">
+	{cvData.skills.map((skill, index) => (
+		<span  ={index} 
+		class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-400 border border-gray-500	"
+      >{skill}</span>
+	))}
+    
+  </div>
+  
+  <Footer />
+</Layout>
+<style>
+	span{
+		display: flex;
+		width: 130px;
+		margin-bottom: 10px;
+		margin-left: 375px;
+		border: 1px solid black;
+		align-items: center;
+	}
+</style>

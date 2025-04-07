@@ -1,0 +1,79 @@
+---
+import Nav from '../components/Nav.astro';
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import Hr from '../components/Hr.astro';
+import Titulo from '../components/Titulo.astro';
+import cvData from '../data/cv.json';
+import Bio from '../components/Bio.astro';
+---
+
+<Layout>
+    <Nav />
+    <Titulo title="Information"/>
+    <Bio />
+    <Titulo title="Experience"/>
+
+    <div class="experience-section">
+        {cvData.experience.map((exp) => (
+            <div class="experience-item">
+                <h3 class="experience-title">{exp.position}</h3>
+                <p class="experience-company">{exp.company}</p>
+                <p class="experience-duration">{exp.duration}</p>
+                <p class="experience-responsibilities">{exp.responsibilities}</p>
+            </div>
+        ))}
+    </div>
+
+    <Hr />
+    <Footer />
+</Layout>
+<style>
+.experience-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.experience-item {
+	margin-left: 640px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 80%; 
+    max-width: 600px; 
+    text-align: left; 
+}
+.experience-title {
+    font-size: 1.5em;
+    font-family: "Onest", sans-serif;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.experience-company {
+    font-family: "Onest", sans-serif;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.experience-duration {
+    font-family: "Onest", sans-serif;
+    font-size: 1em;
+    margin-bottom: 10px;
+    color: #999;
+}
+
+.experience-responsibilities {
+    font-family: "Onest", sans-serif;
+    font-size: 1em;
+    color: #444;
+}
+</style>

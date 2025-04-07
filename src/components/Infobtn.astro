@@ -1,0 +1,38 @@
+---
+import astroLogo from "../assets/astro.svg";
+import background from "../assets/background.svg";
+interface InfobtnProps {
+  title: string;
+  description?: string; //opcional con el ?
+}
+
+const { title = "text x defecte", description = "descripció buida" } =
+  Astro.props;
+---
+
+<button> {title} <span class="flecha">→</span></button>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+  button {
+    margin-left: 375px;
+    font-family: "Space Mono", serif;
+    font-weight: 500;
+    border-radius: 50px;
+    border: solid 1px #000;
+    background-color: black;
+    color: white;
+    width: 200px;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-bottom: 75px;
+    transition: background-color 0.1s ease-in-out;
+  }
+  button:hover {
+    background-color: rgb(46, 49, 61);
+  }
+  .flecha {
+    margin-left: 10px;
+  }
+</style>
