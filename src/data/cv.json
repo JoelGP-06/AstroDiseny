@@ -105,6 +105,17 @@
             "description": "Aplicació per monitoritzar entrenaments i progrés físic.",
             "url": "https://fitnesstracker.dev",
             "image": "https://images.pexels.com/photos/2261477/pexels-photo-2261477.jpeg"
+        },
+        {
+            "id": "5",
+            "slug": "titan-flow",
+            "name": "Titan Flow",
+            "description": "Página web de la marca de vegudes energetiques Titan Flow.",
+            "url": "projecte/titan-flow",
+            "image": "/tf-cap.webp",
+            "objectiu": "Crear una pàgina web atractiva i funcional per a la marca Titan Flow, destacant els seus productes i valors.",
+            "eines": "HTML5, CSS3, FIGMA",
+            "repte": "Dissenyar una interfície que reflecteixi l'energia i la dinàmica de la marca, amb un enfocament en l'estètica i la usabilitat."
         }
     ],
     "blog_posts": [{

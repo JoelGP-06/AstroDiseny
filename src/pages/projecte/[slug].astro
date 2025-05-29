@@ -1,60 +1,184 @@
 ---
 import type { GetStaticPaths } from "astro";
-import projectsData from '../../data/cv.json';
-import Layout from '../../layouts/Layout.astro';
-import PersonalProjects from "../../components/PersonalProjects.astro";
+import projectsData from "../../data/cv.json";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Layout from "../../layouts/Layout.astro";
 //funció que retorna totes les rutes dinàmiques per generar la compilació
-export async function getStaticPaths(){
-    //mapejar els estudis per generar els parametres id per cada ruta dinàmica
-    const paths = projectsData.projects.map(project => ({
-        params:{slug: project.slug} //El id de cada estudi serà posat per la ruta dinàmica
-    }));
-    return paths;
+export async function getStaticPaths() {
+  //mapejar els estudis per generar els parametres id per cada ruta dinàmica
+  const paths = projectsData.projects.map((project) => ({
+    params: { slug: project.slug }, //El id de cada estudi serà posat per la ruta dinàmica
+  }));
+  return paths;
 }
 
 //obtenir id de la ruta dinàmica
-const {slug} = Astro.params
+const { slug } = Astro.params;
 //buscar l'estudi per id
-const project = projectsData.projects.find(project => project.slug === slug);
+const project = projectsData.projects.find((project) => project.slug === slug);
 
 //si no trobes l'estudi, llança error
-if (!project){
-    throw new Error("projecte no trobat")
+if (!project) {
+  throw new Error("projecte no trobat");
 }
 ---
+
 <Layout>
-   <PersonalProjects />
-    <a href={project.url} style="border: solid 1px black">
-        <div class="container">
-            <img src={project.image} alt="">
-            <h4>{project.name}</h4>
-            <h5>{project.description}</h5>
-        </div>
-    </a>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-        .container {
-          display: flex;
-          flex-direction: column;
-          font-family: "Onest", sans-serif;
-          width: 450px;
-          color: #000;
-          margin-top: 50px;
-          display: flex;
-          margin-left: 100px;
-          border: 1px solid #000;
-          align-items: center;
-          background-color: rgb(249, 248, 248);
-        }
-        img{
-            margin-top: 50px;
-            border-radius: 10px;
-            width: 300px;
-        }
-        h4 {
-          text-decoration: none;
-          font-weight: 700;
-        }
-      </style>
-      
+  <Nav />
+
+  <div class="general">
+    <div class="container header-container">
+      <h1>Detall de Titan Flow</h1>
+      <a class="btn" href="https://titan-flow-completed.netlify.app/" target="_blank">PROBAR DEMO</a>
+    </div>
+    <div class="media-block">
+      <picture>
+        <source srcset="/tf-cap.webp" type="image/webp">
+        <img src="/tf-cap.webp" alt="img titanflow" />
+      </picture>
+      <div class="video-container">
+        <video src="/mostra-tf.mp4" autoplay loop muted></video>
+      </div>
+    </div>
+    <p class="license">CC BY-ND</p>
+    <div class="container">
+      <h2>Objectiu:</h2>
+      <p>{project.objectiu}</p>
+    </div>
+    <div class="container">
+      <h2>Eines utilitzades:</h2>
+      <p>{project.eines}</p>
+    </div>
+    <div class="container">
+      <h2>Repte tecnic:</h2>
+      <p>{project.repte}</p>
+    </div>
+  </div>
+  <Footer />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    .general {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: "Space Mono", serif;
+      margin: 40px auto 0 auto;
+      color: #222;
+      width: 700px;
+      background: #fafbfc;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px #0001;
+      padding-bottom: 2rem;
+      margin-left: 350px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      font-family: "Onest", sans-serif;
+      width: 90%;
+      max-width: 500px;
+      color: #222;
+      margin-top: 32px;
+      border: 1px solid #e0e0e0;
+      background-color: #f6f8fa;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px #0001;
+      padding: 1.2rem 1.5rem;
+    }
+    .header-container {
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      background: none;
+      box-shadow: none;
+      border: none;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      padding: 0 1rem;
+    }
+    .header-container h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2a3a4d;
+      margin: 0;
+    }
+    .btn {
+      background: #4f8cff;
+      color: #fff;
+      padding: 0.7em 1.5em;
+      border: none;
+      border-radius: 7px;
+      font-size: 1em;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 2px 8px #4f8cff22;
+      transition: background 0.2s, transform 0.2s;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: #3a6edc;
+      transform: translateY(-2px) scale(1.03);
+    }
+    .media-block {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .media-block img {
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #0001;
+      margin: 0;
+    }
+    .video-container video {
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px #0001;
+      margin: 0;
+      background: #eee;
+    }
+    .license {
+      font-size: 0.95em;
+      color: #888;
+      text-align: right;
+      margin: 0 0 1rem 0;
+      width: 90%;
+      max-width: 500px;
+    }
+    .container h2 {
+      font-size: 1.15rem;
+      color: #4f8cff;
+      margin-bottom: 0.5em;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .container p {
+      font-size: 1.05em;
+      margin: 0;
+      color: #2a3a4d;
+    }
+    @media (max-width: 900px) {
+      .general {
+        width: 98vw;
+        padding: 0.5rem;
+      }
+      .media-block {
+        flex-direction: column;
+        align-items: center;
+      }
+      .media-block img, .video-container video {
+        width: 98vw;
+        max-width: 350px;
+      }
+      .container, .license {
+        max-width: 98vw;
+      }
+    }
+  </style>
 </Layout>

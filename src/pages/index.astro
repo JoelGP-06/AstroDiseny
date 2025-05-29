@@ -32,23 +32,28 @@ import cvData from "../data/cv.json";
   <div class="proyectos">
     <PersonalProjects 
     title ={`${cvData.projects[0].name}`}
-    subtitle = {`${cvData.projects[0].subtitle}`}
+    subtitle = {`${cvData.projects[0].description}`}
     image = {`${cvData.projects[0].image}`}//>
     
     <PersonalProjects 
     title ={`${cvData.projects[1].name}`}
-    subtitle = {`${cvData.projects[1].subtitle}`}
+    subtitle = {`${cvData.projects[1].description}`}
     image = {`${cvData.projects[1].image}`}//>
     
     <PersonalProjects 
     title ={`${cvData.projects[2].name}`}
-    subtitle = {`${cvData.projects[2].subtitle}`}
+    subtitle = {`${cvData.projects[2].description}`}
     image = {`${cvData.projects[2].image}`}//>
     
     <PersonalProjects 
     title ={`${cvData.projects[3].name}`}
-    subtitle = {`${cvData.projects[3].subtitle}`}
+    subtitle = {`${cvData.projects[3].description}`}
     image = {`${cvData.projects[3].image}`}//>
+
+    <a href=`${cvData.projects[4].url}`><PersonalProjects 
+    title ={`${cvData.projects[4].name}`}
+    subtitle = {`${cvData.projects[4].description}`}
+    image = {`${cvData.projects[4].image}`}//></a>
   </div>
   <Infobtn title="View older projects" />
 
